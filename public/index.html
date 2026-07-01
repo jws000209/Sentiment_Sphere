@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>감성 분석 서비스 | Sentiment Sphere</title>
+  <!-- Google Fonts 로드 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="background-glow"></div>
+  
+  <div class="app-container">
+    <header>
+      <h1 class="logo">Sentiment <span>Sphere</span></h1>
+      <p class="subtitle">텍스트를 분석하여 숨겨진 감성과 신뢰도를 탐색해 보세요.</p>
+    </header>
+
+    <main class="main-layout">
+      <!-- 좌측: 입력 영역 -->
+      <section class="input-panel glass">
+        <h2>텍스트 분석</h2>
+        <div class="textarea-wrapper">
+          <textarea id="text-input" placeholder="분석할 텍스트를 입력하세요... (최대 1000자)" maxlength="1000"></textarea>
+          <div class="counter-container">
+            <span id="char-count">0</span>/1000
+          </div>
+        </div>
+        <button id="analyze-btn" class="gradient-btn">
+          <span class="btn-text">감성 분석 시작</span>
+          <span class="spinner hidden"></span>
+        </button>
+        <div id="error-message" class="error-box hidden"></div>
+      </section>
+
+      <!-- 우측: 인터랙티브 Sphere & 결과 표시 영역 -->
+      <section class="display-panel glass">
+        <div class="sphere-container">
+          <!-- 감성 상태에 따라 색상과 펄스가 변경되는 구체 -->
+          <div id="sentiment-sphere" class="sphere state-neutral"></div>
+        </div>
+
+        <div id="result-container" class="result-box">
+          <div class="result-placeholder">
+            <p>분석 결과를 보려면 왼쪽에서 텍스트를 입력하고 분석해 주세요.</p>
+          </div>
+          <div class="result-content hidden">
+            <div class="result-header">
+              <span id="result-badge" class="badge badge-neutral">대기 중</span>
+              <span id="result-confidence" class="confidence-text">0%</span>
+            </div>
+            <div class="progress-bar-wrapper">
+              <div id="result-progress" class="progress-bar" style="width: 0%"></div>
+            </div>
+            <p id="result-reason" class="reason-text">감성 분석이 완료되면 사유가 이곳에 표시됩니다.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 하단: 분석 히스토리 -->
+    <section class="history-panel glass">
+      <h2>최근 분석 이력</h2>
+      <div id="history-list" class="history-grid">
+        <div class="no-history">이력이 존재하지 않습니다.</div>
+      </div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
